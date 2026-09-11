@@ -364,12 +364,12 @@ document.addEventListener('keydown', function(e) {
 // ===== Close Error Banner =====
 function closeErrorBanner() {
   document.getElementById('error-banner').classList.add('hidden');
-  localStorage.setItem('netsat_banner_closed', '1');
+  localStorage.setItem('netsat_banner_closed_v2', '1');
 }
 
 // ===== Init =====
 render();
 updateInkBar(document.querySelector('.mat-tab-label.mat-tab-label-active'));
-if (localStorage.getItem('netsat_banner_closed') === '1') {
+if (localStorage.getItem('netsat_banner_closed_v2') === '1') {
   document.getElementById('error-banner').classList.add('hidden');
 }

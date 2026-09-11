@@ -243,6 +243,20 @@ body {
   color: #fff;
 }
 
+/* Toolbar logo (shown on tablets/phones where the sidebar logo is hidden) */
+.toolbar-logo {
+  display: none;
+  align-items: center;
+  line-height: 0;
+}
+
+.toolbar-logo img {
+  height: 42px;
+  width: auto;
+  cursor: pointer;
+  margin-right: 2px;
+}
+
 /* ===== Main Content Area ===== */
 .main {
   margin-left: 265px;
@@ -869,7 +883,7 @@ body {
   .nav-item { justify-content: center; width: 90%; }
   .main { margin-left: 56px; }
   .content-container { padding: 8px; }
-  .score-actions-col { display: none; }
+  .toolbar-logo { display: inline-flex; }
   .content { flex-direction: column !important; }
   .content > div { max-width: 100% !important; }
   .flex-key, .flex-value { max-width: 100% !important; }
@@ -890,7 +904,12 @@ body {
   .example-button-row .mat-raised-button { margin: 6px 0; justify-content: center; }
   .score-number { font-size: 36px; }
   .score-stat-col p { font-size: 12px; }
-  .score-display-col { max-width: 100% !important; }
+  .score-stat-col, .score-display-col, .score-actions-col { max-width: 100% !important; }
+  .show-score-item-card > div { flex-direction: column !important; }
+  .score-display-col { text-align: center; }
+  .score-actions-col { align-items: stretch; padding-left: 0; }
+  .score-actions-col .btn-edit-score,
+  .score-actions-col .btn-del-score { display: inline-block; width: auto; padding: 8px 20px; }
   .modal { padding: 16px; max-width: 100%; max-height: 92vh; }
   .mat-card { padding: 12px; }
   .mat-card-header-text { margin: 0 8px; }

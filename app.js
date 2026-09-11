@@ -6,7 +6,8 @@ const defaultStudentInfo = {
   idcard: '1449900898758',
   school: 'โรงเรียนสาธิตมหาวิทยาลัยมหาสารคาม (ฝ่ายมัธยม) จังหวัดมหาสารคาม',
   level: 'ระดับชั้น ม.5',
-  expire: '15 สิงหาคม 2570',
+  expireR1: '15 สิงหาคม 2570',
+  expireR2: '11 กันยายน 2571',
 };
 
 const defaultSubjects = [
@@ -52,7 +53,13 @@ function loadRound(key, fallback) {
   } catch (e) { return clone(fallback); }
 }
 
-let studentInfo = loadFromStorage('netsat_info', defaultStudentInfo);
+const storedInfo = loadFromStorage('netsat_info', null);
+let studentInfo = {
+  ...defaultStudentInfo,
+  ...storedInfo,
+  expireR1: (storedInfo && (storedInfo.expireR1 || storedInfo.expire)) || defaultStudentInfo.expireR1,
+  expireR2: (storedInfo && storedInfo.expireR2) || defaultStudentInfo.expireR2,
+};
 const legacySubjects = loadFromStorage('netsat_subjects', null);
 let subjectsR1 = loadRound('netsat_subjects_r1', defaultSubjects);
 let subjectsR2 = loadRound('netsat_subjects_r2', legacySubjects || defaultSubjects);
@@ -92,6 +99,7 @@ function selectRoundTab(round, el) {
   if (title) title.textContent = 'รอบการสอบ ' + round + '/2568';
   subjects = (round === '1') ? subjectsR1 : subjectsR2;
   renderScores();
+  renderInfo();
   updateInkBar(el);
 }
 
@@ -114,13 +122,17 @@ function render() {
   renderScores();
 }
 
+function currentExpire() {
+  return (subjects === subjectsR1) ? studentInfo.expireR1 : studentInfo.expireR2;
+}
+
 function renderInfo() {
   document.getElementById('info-name').textContent = studentInfo.name;
   document.getElementById('info-seatno').textContent = studentInfo.seatno;
   document.getElementById('info-idcard').textContent = studentInfo.idcard;
   document.getElementById('info-school').innerHTML =
     escHtml(studentInfo.school) + '<br><small>' + escHtml(studentInfo.level || '') + '</small>';
-  document.getElementById('info-expire').textContent = studentInfo.expire;
+  document.getElementById('info-expire').textContent = currentExpire();
   document.getElementById('sidebar-name').textContent = studentInfo.name;
   document.getElementById('sidebar-email').textContent = studentInfo.email;
   document.getElementById('toolbar-email').textContent = studentInfo.email;
@@ -244,7 +256,8 @@ function openEditInfo() {
   document.getElementById('ei-idcard').value = studentInfo.idcard;
   document.getElementById('ei-school').value = studentInfo.school;
   document.getElementById('ei-level').value = studentInfo.level || '';
-  document.getElementById('ei-expire').value = studentInfo.expire;
+  document.getElementById('ei-expire1').value = studentInfo.expireR1 || '';
+  document.getElementById('ei-expire2').value = studentInfo.expireR2 || '';
   openModal('modal-info');
 }
 
@@ -257,7 +270,8 @@ function saveInfo() {
     idcard: document.getElementById('ei-idcard').value.trim(),
     school: document.getElementById('ei-school').value.trim(),
     level: document.getElementById('ei-level').value.trim(),
-    expire: document.getElementById('ei-expire').value.trim(),
+    expireR1: document.getElementById('ei-expire1').value.trim(),
+    expireR2: document.getElementById('ei-expire2').value.trim(),
   };
   saveToStorage();
   closeModal('modal-info');

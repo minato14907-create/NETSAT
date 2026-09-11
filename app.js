@@ -96,7 +96,7 @@ function selectRoundTab(round, el) {
   document.querySelectorAll('.mat-tab-label').forEach(t => t.classList.remove('mat-tab-label-active'));
   el.classList.add('mat-tab-label-active');
   const title = document.getElementById('round-title');
-  if (title) title.textContent = 'รอบการสอบ ' + round + '/2568';
+  if (title) title.textContent = 'รอบการสอบ ' + round + '/2569';
   subjects = (round === '1') ? subjectsR1 : subjectsR2;
   renderScores();
   renderInfo();

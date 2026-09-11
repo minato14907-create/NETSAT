@@ -862,6 +862,7 @@ body {
 }
 
 /* ===== Responsive ===== */
+/* Tablet and smaller: sidebar collapses to icon rail */
 @media (max-width: 959px) {
   .sidebar { width: 56px; min-width: 56px; }
   .logo-wrap img, #sidebar-name, #sidebar-email, .mat-list-text, .sidebar-footer { display: none; }
@@ -869,6 +870,36 @@ body {
   .main { margin-left: 56px; }
   .content-container { padding: 8px; }
   .score-actions-col { display: none; }
-  .flex-key { max-width: 40%; }
-  .flex-value { max-width: 60%; }
+  .content { flex-direction: column !important; }
+  .content > div { max-width: 100% !important; }
+  .flex-key, .flex-value { max-width: 100% !important; }
+}
+
+/* Phone: hide sidebar, use full width */
+@media (max-width: 600px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; }
+  .mat-toolbar { height: 56px; padding: 0 12px; gap: 4px; }
+  .mat-toolbar .toolbar-btn { padding: 0 10px; font-size: 13px; }
+  .toolbar-hide-sm { display: none; }
+  .content-container { margin: 0; padding: 0 6px; }
+  .mat-tab-label { padding: 0 12px; font-size: 13px; }
+  .mat-tab-label .mat-icon { font-size: 18px; }
+  .mat-card-title { font-size: 17px; }
+  .example-button-row { display: flex; flex-direction: column; width: 100%; align-items: stretch; }
+  .example-button-row .mat-raised-button { margin: 6px 0; justify-content: center; }
+  .score-number { font-size: 36px; }
+  .score-stat-col p { font-size: 12px; }
+  .score-display-col { max-width: 100% !important; }
+  .modal { padding: 16px; max-width: 100%; max-height: 92vh; }
+  .mat-card { padding: 12px; }
+  .mat-card-header-text { margin: 0 8px; }
+  .toast { left: 16px; right: 16px; text-align: center; }
+}
+
+/* Very small screens */
+@media (max-width: 380px) {
+  .mat-tab-label { padding: 0 8px; font-size: 12px; gap: 4px; }
+  .mat-tab-label .mat-icon { display: none; }
+  .score-number { font-size: 30px; }
 }

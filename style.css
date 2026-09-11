@@ -627,6 +627,63 @@ body {
   background: #f5f5f5;
 }
 
+/* ===== Error Alert Banner ===== */
+.error-banner {
+  background: #fef2f2;
+  border-bottom: 1px solid #fca5a5;
+  padding: 12px 16px;
+  margin: 0 3px;
+}
+
+.error-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 100%;
+}
+
+.error-banner-icon {
+  font-size: 28px;
+  color: #dc2626;
+  flex-shrink: 0;
+}
+
+.error-banner-text {
+  flex: 1;
+  font-size: 14px;
+  color: #991b1b;
+  line-height: 1.6;
+}
+
+.error-banner-text strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 2px;
+  color: #7f1d1d;
+}
+
+.error-banner-close {
+  background: transparent;
+  border: none;
+  color: #dc2626;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.error-banner-close:hover {
+  background: rgba(220,38,38,0.1);
+}
+
+.error-banner.hidden {
+  display: none;
+}
+
 /* ===== Survey buttons (top of page) ===== */
 .example-button-row {
   display: table-cell;
@@ -914,6 +971,10 @@ body {
   .mat-card { padding: 12px; }
   .mat-card-header-text { margin: 0 8px; }
   .toast { left: 16px; right: 16px; text-align: center; }
+  .error-banner { margin: 0; padding: 10px 12px; }
+  .error-banner-icon { font-size: 22px; }
+  .error-banner-text { font-size: 13px; }
+  .error-banner-text strong { font-size: 14px; }
 }
 
 /* Very small screens */

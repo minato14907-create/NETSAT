@@ -113,6 +113,20 @@
       </button>
     </mat-toolbar>
 
+    <!-- Error Alert Banner -->
+    <div class="error-banner" id="error-banner">
+      <div class="error-banner-content">
+        <span class="material-icons error-banner-icon">error_outline</span>
+        <div class="error-banner-text">
+          <strong>แจ้งเตือน: การกรอกคะแนนผิดพลาด</strong>
+          <span>ระบบได้ตรวจพบการกรอกคะแนนวิชาความฉลาดรู้ทั่วไปด้านภาษาอังกฤษ ผิดพลาด ทางศูนย์_NETSAT_มหาวิทยาลัยขอนแก่น ได้แก้ไขเป็นคะแนนที่ถูกต้องแล้ว ขออภัยมา ณ ที่นี้</span>
+        </div>
+        <button class="error-banner-close" onclick="closeErrorBanner()">
+          <span class="material-icons">close</span>
+        </button>
+      </div>
+    </div>
+
     <!-- mat-card content-container -->
     <mat-card class="mat-card content-container">
 
@@ -222,7 +236,8 @@
     <div class="form-group"><label>เลขที่นั่งสอบ</label><input type="text" id="ei-seatno"/></div>
     <div class="form-group"><label>รหัสประจำตัวประชาชน</label><input type="text" id="ei-idcard"/></div>
     <div class="form-group"><label>โรงเรียน</label><input type="text" id="ei-school"/></div>
-    <div class="form-group"><label>ระดับชั้น</label><input type="text" id="ei-level"/></div>
+    <div class="form-group"><label>ระดับชั้น รอบ 1</label><input type="text" id="ei-level1"/></div>
+    <div class="form-group"><label>ระดับชั้น รอบ 2</label><input type="text" id="ei-level2"/></div>
     <div class="form-group"><label>วันหมดอายุคะแนนรอบ 1</label><input type="text" id="ei-expire1"/></div>
     <div class="form-group"><label>วันหมดอายุคะแนนรอบ 2</label><input type="text" id="ei-expire2"/></div>
     <div class="modal-actions">

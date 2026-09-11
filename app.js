@@ -5,7 +5,8 @@ const defaultStudentInfo = {
   seatno: '44011853',
   idcard: '1449900898758',
   school: 'โรงเรียนสาธิตมหาวิทยาลัยมหาสารคาม (ฝ่ายมัธยม) จังหวัดมหาสารคาม',
-  level: 'ระดับชั้น ม.5',
+  levelR1: 'ระดับชั้น ม.5',
+  levelR2: 'ระดับชั้น ม.6',
   expireR1: '15 สิงหาคม 2570',
   expireR2: '11 กันยายน 2571',
 };
@@ -59,6 +60,8 @@ let studentInfo = {
   ...storedInfo,
   expireR1: (storedInfo && (storedInfo.expireR1 || storedInfo.expire)) || defaultStudentInfo.expireR1,
   expireR2: (storedInfo && storedInfo.expireR2) || defaultStudentInfo.expireR2,
+  levelR1: (storedInfo && storedInfo.levelR1) || defaultStudentInfo.levelR1,
+  levelR2: (storedInfo && storedInfo.levelR2) || defaultStudentInfo.levelR2,
 };
 const legacySubjects = loadFromStorage('netsat_subjects', null);
 let subjectsR1 = loadRound('netsat_subjects_r1', defaultSubjects);
@@ -127,12 +130,16 @@ function currentExpire() {
   return (subjects === subjectsR1) ? studentInfo.expireR1 : studentInfo.expireR2;
 }
 
+function currentLevel() {
+  return (subjects === subjectsR1) ? studentInfo.levelR1 : studentInfo.levelR2;
+}
+
 function renderInfo() {
   document.getElementById('info-name').textContent = studentInfo.name;
   document.getElementById('info-seatno').textContent = studentInfo.seatno;
   document.getElementById('info-idcard').textContent = studentInfo.idcard;
   document.getElementById('info-school').innerHTML =
-    escHtml(studentInfo.school) + '<br><small>' + escHtml(studentInfo.level || '') + '</small>';
+    escHtml(studentInfo.school) + '<br><small>' + escHtml(currentLevel() || '') + '</small>';
   document.getElementById('info-expire').textContent = currentExpire();
   document.getElementById('sidebar-name').textContent = studentInfo.name;
   document.getElementById('sidebar-email').textContent = studentInfo.email;
@@ -256,7 +263,8 @@ function openEditInfo() {
   document.getElementById('ei-seatno').value = studentInfo.seatno;
   document.getElementById('ei-idcard').value = studentInfo.idcard;
   document.getElementById('ei-school').value = studentInfo.school;
-  document.getElementById('ei-level').value = studentInfo.level || '';
+  document.getElementById('ei-level1').value = studentInfo.levelR1 || '';
+  document.getElementById('ei-level2').value = studentInfo.levelR2 || '';
   document.getElementById('ei-expire1').value = studentInfo.expireR1 || '';
   document.getElementById('ei-expire2').value = studentInfo.expireR2 || '';
   openModal('modal-info');
@@ -270,7 +278,8 @@ function saveInfo() {
     seatno: document.getElementById('ei-seatno').value.trim(),
     idcard: document.getElementById('ei-idcard').value.trim(),
     school: document.getElementById('ei-school').value.trim(),
-    level: document.getElementById('ei-level').value.trim(),
+    levelR1: document.getElementById('ei-level1').value.trim(),
+    levelR2: document.getElementById('ei-level2').value.trim(),
     expireR1: document.getElementById('ei-expire1').value.trim(),
     expireR2: document.getElementById('ei-expire2').value.trim(),
   };
@@ -352,6 +361,15 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
+// ===== Close Error Banner =====
+function closeErrorBanner() {
+  document.getElementById('error-banner').classList.add('hidden');
+  localStorage.setItem('netsat_banner_closed', '1');
+}
+
 // ===== Init =====
 render();
 updateInkBar(document.querySelector('.mat-tab-label.mat-tab-label-active'));
+if (localStorage.getItem('netsat_banner_closed') === '1') {
+  document.getElementById('error-banner').classList.add('hidden');
+}

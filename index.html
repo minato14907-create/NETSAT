@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KU-NETSAT</title>
+  <link rel="icon" type="image/png" href="assets/img/logo.png">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;500&family=Sarabun:wght@100;200;400;500&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- Sidebar (mat-drawer side) -->
+  <aside class="sidebar">
+
+    <span class="logo-wrap" onclick="handleLogoClick()">
+      <img src="assets/img/logo.png" alt="NETSAT Logo" style="align-self:center;"/>
+    </span>
+    <div id="admin-indicator" class="admin-indicator">A</div>
+
+    <hr class="mat-divider"/>
+
+    <mat-list class="user-list">
+      <mat-list-item class="mat-list-item mat-focus-indicator">
+        <div class="mat-list-item-content">
+          <div class="mat-list-text" id="sidebar-name">นายธัญเทพ ภัทรโกศล</div>
+        </div>
+      </mat-list-item>
+      <mat-list-item class="mat-list-item mat-focus-indicator">
+        <div class="mat-list-item-content">
+          <div class="mat-list-text" id="sidebar-email">thunyathep@gmail.com</div>
+        </div>
+      </mat-list-item>
+    </mat-list>
+
+    <hr class="mat-divider"/>
+
+    <mat-selection-list class="nav-list">
+      <mat-list-option class="nav-item" tabindex="-1">
+        <div class="mat-list-item-content">
+          <div class="mat-list-text">หน้าหลัก</div>
+          <mat-icon class="mat-icon material-icons nav-icon">home</mat-icon>
+        </div>
+      </mat-list-option>
+      <mat-list-option class="nav-item" tabindex="-1">
+        <div class="mat-list-item-content">
+          <div class="mat-list-text">ประวัติส่วนตัว</div>
+          <mat-icon class="mat-icon material-icons nav-icon">account_circle</mat-icon>
+        </div>
+      </mat-list-option>
+      <mat-list-option class="nav-item" tabindex="-1">
+        <div class="mat-list-item-content">
+          <div class="mat-list-text">สมัครสอบ</div>
+          <mat-icon class="mat-icon material-icons nav-icon">ballot</mat-icon>
+        </div>
+      </mat-list-option>
+      <mat-list-option class="nav-item active" tabindex="-1">
+        <div class="mat-list-item-content">
+          <div class="mat-list-text">ผลการสอบ</div>
+          <mat-icon class="mat-icon material-icons nav-icon">card_membership</mat-icon>
+        </div>
+      </mat-list-option>
+
+      <hr class="mat-divider"/>
+
+      <mat-list-option class="nav-item" tabindex="-1">
+        <div class="mat-list-item-content">
+          <div class="mat-list-text">เปลี่ยนรหัสผ่าน</div>
+          <mat-icon class="mat-icon material-icons nav-icon">fingerprint</mat-icon>
+        </div>
+      </mat-list-option>
+      <mat-list-option class="nav-item" tabindex="-1">
+        <div class="mat-list-item-content">
+          <div class="mat-list-text">ออกจากระบบ</div>
+          <mat-icon class="mat-icon material-icons nav-icon">logout</mat-icon>
+        </div>
+      </mat-list-option>
+
+      <hr class="mat-divider"/>
+
+      <div class="sidebar-footer">
+        <p style="color:darkgray;"><small>Version 1.0 <br> 223.206.223.178</small></p>
+      </div>
+    </mat-selection-list>
+  </aside>
+
+  <!-- Main Content (mat-drawer-content) -->
+  <main class="main" style="margin-left:265px;">
+
+    <!-- Toolbar (mat-toolbar color="primary") -->
+    <mat-toolbar class="mat-toolbar mat-primary mat-toolbar-single-row mat-elevation-z8">
+      <button class="toolbar-icon-btn">
+        <span class="material-icons" style="color:#fff;">menu</span>
+      </button>
+      <span>NETSAT</span>
+      <span class="toolbar-spacer"></span>
+      <button class="toolbar-btn">
+        <span class="material-icons" style="font-size:20px;">mail</span>
+        netsat@kku.ac.th
+      </button>
+      <button class="toolbar-btn">
+        <span class="material-icons" style="font-size:20px;">stay_current_portrait</span>
+        095-6716259
+      </button>
+      <button class="toolbar-btn">
+        <span class="material-icons" style="font-size:20px;">lock</span>
+        <span id="toolbar-email">thunyathep@gmail.com</span>
+      </button>
+    </mat-toolbar>
+
+    <!-- mat-card content-container -->
+    <mat-card class="mat-card content-container">
+
+      <!-- Survey buttons (example-button-row) -->
+      <div class="example-button-row">
+        <a href="https://forms.office.com/r/yduubjMwpV" target="_blank" class="mat-raised-button mat-button-base">
+          <span class="mat-button-wrapper"> แบบสำรวจประสบการณ์ในการใช้บริการระบบรับสมัครและจัดสอบ NETSAT </span>
+        </a>
+        <a href="https://kku.world/g1vi5q" target="_blank" class="mat-raised-button mat-button-base">
+          <span class="mat-button-wrapper"> แบบประเมินความพึงพอใจ NETSAT </span>
+        </a>
+      </div>
+      <br><br>
+
+      <!-- Tab group (sticky-tabs) -->
+      <div class="mat-tab-group sticky-tabs">
+        <div class="mat-tab-header">
+          <div class="mat-tab-label-container">
+            <div class="mat-tab-list">
+              <div class="mat-tab-labels">
+                <div class="mat-tab-label" onclick="selectRoundTab('1', this)">
+                  <div class="mat-tab-label-content">
+                    <span class="material-icons" style="color:green;margin-right:3px;font-size:20px;">task_alt</span>
+                    รอบ 1/2568
+                  </div>
+                </div>
+                <div class="mat-tab-label mat-tab-label-active" onclick="selectRoundTab('2', this)">
+                  <div class="mat-tab-label-content">
+                    <span class="material-icons" style="color:green;margin-right:3px;font-size:20px;">task_alt</span>
+                    รอบ 2/2568
+                  </div>
+                </div>
+              </div>
+              <div class="mat-ink-bar" id="tab-ink" style="visibility:visible;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab body: Student Info Card -->
+        <div class="mat-tab-body-wrapper">
+          <div class="mat-horizontal-content-container">
+            <mat-card class="mat-card mat-focus-indicator">
+              <mat-card-title class="mat-card-title" style="margin-bottom:10px;" id="round-title">รอบการสอบ 2/2568</mat-card-title>
+              <mat-card-content class="mat-card-content">
+                <div fxlayout="row" fxlayout.xs="column" fxflexfill="" class="content" style="height:100%;min-height:100%;min-width:100%;width:100%;flex-direction:row;box-sizing:border-box;display:flex;">
+                  <div fxflex="30" class="flex-key" style="flex:1 1 100%;box-sizing:border-box;max-width:30%;">ชื่อนักเรียน</div>
+                  <div fxflex="60" class="flex-value" id="info-name" style="flex:1 1 100%;box-sizing:border-box;max-width:60%;">นายธัญเทพ ภัทรโกศล</div>
+                </div>
+                <div fxlayout="row" fxlayout.xs="column" fxflexfill="" class="content" style="height:100%;min-height:100%;min-width:100%;width:100%;flex-direction:row;box-sizing:border-box;display:flex;">
+                  <div fxflex="30" class="flex-key" style="flex:1 1 100%;box-sizing:border-box;max-width:30%;">เลขที่นั่งสอบ</div>
+                  <div fxflex="60" class="flex-value" id="info-seatno" style="flex:1 1 100%;box-sizing:border-box;max-width:60%;">44011853</div>
+                </div>
+                <div fxlayout="row" fxlayout.xs="column" fxflexfill="" class="content" style="height:100%;min-height:100%;min-width:100%;width:100%;flex-direction:row;box-sizing:border-box;display:flex;">
+                  <div fxflex="30" class="flex-key" style="flex:1 1 100%;box-sizing:border-box;max-width:30%;">รหัสประจำตัวประชาชน</div>
+                  <div fxflex="60" class="flex-value" id="info-idcard" style="flex:1 1 100%;box-sizing:border-box;max-width:60%;">1449900898758</div>
+                </div>
+                <div fxlayout="row" fxlayout.xs="column" fxflexfill="" class="content" style="height:100%;min-height:100%;min-width:100%;width:100%;flex-direction:row;box-sizing:border-box;display:flex;">
+                  <div fxflex="30" class="flex-key hide-on-sticky" style="flex:1 1 100%;box-sizing:border-box;max-width:30%;">โรงเรียนของนักเรียน</div>
+                  <div fxflex="60" class="flex-value hide-on-sticky" id="info-school" style="flex:1 1 100%;box-sizing:border-box;max-width:60%;">โรงเรียนสาธิตมหาวิทยาลัยมหาสารคาม (ฝ่ายมัธยม) จังหวัดมหาสารคาม<br><small id="info-level">ระดับชั้น ม.5</small></div>
+                </div>
+                <div fxlayout="row" fxlayout.xs="column" fxflexfill="" class="content" style="height:100%;min-height:100%;min-width:100%;width:100%;flex-direction:row;box-sizing:border-box;display:flex;">
+                  <div fxflex="30" class="flex-key" style="flex:1 1 100%;box-sizing:border-box;max-width:30%;">วันหมดอายุของคะแนน</div>
+                  <div fxflex="60" class="flex-value" style="flex:1 1 100%;box-sizing:border-box;max-width:60%;"><strong id="info-expire">15 สิงหาคม 2570</strong></div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <!-- Score Cards -->
+      <div class="list-score-card" id="score-list"></div>
+
+
+
+    </mat-card>
+  </main>
+</div>
+
+<!-- Modal: Edit Score -->
+<div class="modal-overlay" id="modal-score" style="display:none">
+  <div class="modal">
+    <h3>แก้ไขคะแนน</h3>
+    <input type="hidden" id="edit-index"/>
+    <div class="form-group"><label>ชื่อวิชา</label><input type="text" id="edit-name"/></div>
+    <div class="form-group"><label>รหัสวิชา</label><input type="text" id="edit-code"/></div>
+    <div class="form-group"><label>คะแนนสูงสุด</label><input type="number" id="edit-max" step="0.01"/></div>
+    <div class="form-group"><label>คะแนนต่ำสุด</label><input type="number" id="edit-min" step="0.01"/></div>
+    <div class="form-group"><label>ค่าเฉลี่ย</label><input type="number" id="edit-avg" step="0.01"/></div>
+    <div class="form-group"><label>ค่าเบี่ยงเบนมาตรฐาน</label><input type="number" id="edit-sd" step="0.01"/></div>
+    <div class="form-group score-highlight-group"><label>คะแนนของฉัน</label><input type="number" id="edit-score" step="0.001"/></div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal('modal-score')">ยกเลิก</button>
+      <button class="btn-save" onclick="saveScore()">บันทึก</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Edit Info -->
+<div class="modal-overlay" id="modal-info" style="display:none">
+  <div class="modal">
+    <h3>แก้ไขข้อมูลนักเรียน</h3>
+    <div class="form-group"><label>ชื่อ-นามสกุล</label><input type="text" id="ei-name"/></div>
+    <div class="form-group"><label>อีเมล</label><input type="text" id="ei-email"/></div>
+    <div class="form-group"><label>เลขที่นั่งสอบ</label><input type="text" id="ei-seatno"/></div>
+    <div class="form-group"><label>รหัสประจำตัวประชาชน</label><input type="text" id="ei-idcard"/></div>
+    <div class="form-group"><label>โรงเรียน</label><input type="text" id="ei-school"/></div>
+    <div class="form-group"><label>ระดับชั้น</label><input type="text" id="ei-level"/></div>
+    <div class="form-group"><label>วันหมดอายุของคะแนน</label><input type="text" id="ei-expire"/></div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal('modal-info')">ยกเลิก</button>
+      <button class="btn-save" onclick="saveInfo()">บันทึก</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Add Subject -->
+<div class="modal-overlay" id="modal-add" style="display:none">
+  <div class="modal">
+    <h3>เพิ่มวิชา</h3>
+    <div class="form-group"><label>ชื่อวิชา</label><input type="text" id="add-name" placeholder="เช่น ความฉลาดรู้เฉพาะด้านฟิสิกส์"/></div>
+    <div class="form-group"><label>รหัสวิชา</label><input type="text" id="add-code" placeholder="เช่น รหัสวิชา 204"/></div>
+    <div class="form-group"><label>คะแนนสูงสุด</label><input type="number" id="add-max" value="100" step="0.01"/></div>
+    <div class="form-group"><label>คะแนนต่ำสุด</label><input type="number" id="add-min" value="0" step="0.01"/></div>
+    <div class="form-group"><label>ค่าเฉลี่ย</label><input type="number" id="add-avg" step="0.01"/></div>
+    <div class="form-group"><label>ค่าเบี่ยงเบนมาตรฐาน</label><input type="number" id="add-sd" step="0.01"/></div>
+    <div class="form-group score-highlight-group"><label>คะแนนของฉัน</label><input type="number" id="add-score" step="0.001"/></div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal('modal-add')">ยกเลิก</button>
+      <button class="btn-save" onclick="addSubject()">เพิ่มวิชา</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Confirm Delete -->
+<div class="modal-overlay" id="modal-delete" style="display:none">
+  <div class="modal small">
+    <h3>ยืนยันการลบ</h3>
+    <p>ต้องการลบวิชา <strong id="delete-name"></strong> ออกหรือไม่?</p>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal('modal-delete')">ยกเลิก</button>
+      <button class="btn-delete" onclick="confirmDelete()">ลบ</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
